@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim Your $500 Reward Now! 🎁</title>
+    <meta name="description" content="Get a $500 bonus! Limited-time offer. Claim now before it's too late!">
+    <style>
+        /* Global Styling */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #e5c3c6, #f7d7d9, #ffcccb);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h1 {
+            color: #ff4081;
+            font-size: 26px;
+        }
+
+        .offer-img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .countdown {
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+            margin: 10px 0;
+        }
+
+        .form-container {
+            margin-top: 20px;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Animated Claim Button */
+        .claim-btn {
+            width: 95%;
+            background: #ff4081;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(255, 64, 129, 0.6);
+            animation: pulse 1.5s infinite;
+        }
+
+        .claim-btn:hover {
+            background: #e60073;
+            box-shadow: 0px 0px 20px rgba(255, 64, 129, 0.9);
+        }
+
+        /* Animation for Button */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px rgba(255, 64, 129, 0.6); }
+            50% { box-shadow: 0 0 20px rgba(255, 64, 129, 1); }
+            100% { box-shadow: 0 0 10px rgba(255, 64, 129, 0.6); }
+        }
+
+        .secure-text {
+            font-size: 12px;
+            color: #777;
+            margin-top: 10px;
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Exit Popup */
+        .popup, .overlay {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .popup button {
+            background: red;
+            padding: 10px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🎉 Claim Your $500 Bonus Now! 🎉</h1>
+            <p>Sign up now and <tag>
+              <!--Tab to edit-->
+    <tag>
+      <!--Tab to edit-->
+    </tag>        </tag>claim your exclusive $500 reward before time runs out!</p>
+        </header>
+
+       
+
+        <div class="countdown">
+            <p>Offer expires in: <span id="timer">05:00</span></p>
+        </div>
+
+        <div class="form-container">
+            <form id="leadForm">
+                <input type="text" id="name" placeholder="Enter Your Name" required>
+                <input type="email" id="email" placeholder="Enter Your Email" required>
+                <button type="submit" class="claim-btn">🎁 Claim Your $500 Now</button>
+            </form>
+        </div>
+
+        <p class="secure-text">Your information is 100% secure and will not be shared.</p>
+
+        <footer>
+            <p>© copyright by 2025 All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Exit Popup -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="exitPopup">
+        <h2>Wait! Don't Miss This $500 Offer! 🚀</h2>
+        <p>Click below to secure your reward before it's too late!</p>
+        <button onclick="closePopup()">Claim Your $500 Now</button>
+    </div>
+
+    <script>
+        // Countdown Timer
+        let timeLeft = 300; // 5 minutes
+        const timerElement = document.getElementById("timer");
+
+        function updateTimer() {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            timerElement.innerText = `${minutes}:${seconds}`;
+            
+            if (timeLeft > 0) {
+                timeLeft--;
+                setTimeout(updateTimer, 1000);
+            } else {
+                alert("Oops! The offer has expired. Try again later.");
+            }
+        }
+
+        updateTimer();
+
+        // Form Submission Handling
+        document.getElementById("leadForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+
+            if (name && email) {
+                alert("Congratulations! Your $500 reward is on its way.");
+                window.location.href = "https://smrturl.co/a/sac0b83fbff/8666?s1="; // Redirect to CPA offer
+            } else {
+                alert("Please fill in all fields!");
+            }
+        });
+
+        // Exit Intent Popup
+        let popupTriggered = false;
+        document.addEventListener("mouseleave", function(event) {
+            if (event.clientY < 50 && !popupTriggered) .offer - img {
+    width: 100 % ;
+    border - radius: 10 px;
+    margin - bottom: 15 px;
+        });
+
+        function closePopup() {
+            document.getElementById("exitPopup").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
